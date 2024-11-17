@@ -1,0 +1,23 @@
+TIMELINE
+
+Submission Deadline: February 28, 2025
+
+--- NOVEMBER
+
+ANGGA
+Research Design
+
+ADHI
+Understanding codebase
+Check how well CLIP model recognize the simulated scenes on CLIP
+
+YAMAN
+Learn basic Deep RL
+Review literature about Deep RL Implementation in Robotic Arm Manipulation
+
+
+--- DESEMBER
+
+Training PPO /wo Curriculum
+Evaluate PPO /wo Curriculum 
+Design Evaluation Metrics
