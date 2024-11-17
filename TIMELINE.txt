@@ -6,6 +6,7 @@ Submission Deadline: February 28, 2025
 
 ANGGA
 Research Design
+Review literature about Curriculum Learning
 
 ADHI
 Understand codebase
