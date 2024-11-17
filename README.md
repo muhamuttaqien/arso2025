@@ -1,6 +1,12 @@
 # arso2025
 Our codebase for publishing research work to [ARSO Conference](https://ieee-arso.org/), July 17th-19th 2025, Osaka, Japan
 
+## Background
+
+The problem we aim to address in this research is how to enhance interaction between humans and robots in a smart home setting, particularly in the kitchen, with a focus on a robotic arm manipulator. We believe this can be achieved by implementing a multimodal robot that can understand both visual images and natural language instructions from humans to assist with tasks such as food preparation, utensil handling, and other kitchen activities.
+
+The methodology we propose involves using end-to-end deep reinforcement learning to process multimodal data (images and language), while enhancing the learning process through effective curriculum learning. The training environment will be simulated using the [AI2Thor simulator](https://ai2thor.allenai.org/manipulathor/), with the robot's capabilities focused solely on the manipulation tasks of an arm manipulator within this context.
+
 ## Kitchen-Specific Curriculum with Language Complexity
 
 This curriculum leverages natural language instructions to gradually increase the complexity of manipulation tasks in a simulated AI2-THOR kitchen environment. The progression is designed to help the agent acquire foundational skills before tackling advanced tasks involving spatial reasoning, filtering, and multi-step instructions.
