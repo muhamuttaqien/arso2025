@@ -5,13 +5,14 @@ Submission Deadline: February 28, 2025
 --- NOVEMBER
 
 ANGGA
-Research Design
+Implement codebase
+Research design
 Review literature about Curriculum Learning
 
 ADHI
 Understand codebase
 Check how well CLIP model recognize the simulated scenes on CLIP
-Check how the manipulation works
+Check how the arm manipulation in AI2Thor works
 
 YAMAN
 Learn basic Deep RL
