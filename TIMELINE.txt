@@ -8,7 +8,7 @@ ANGGA
 Research Design
 
 ADHI
-Understanding codebase
+Understand codebase
 Check how well CLIP model recognize the simulated scenes on CLIP
 
 YAMAN
