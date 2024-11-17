@@ -10,6 +10,7 @@ Research Design
 ADHI
 Understand codebase
 Check how well CLIP model recognize the simulated scenes on CLIP
+Check how the manipulation works
 
 YAMAN
 Learn basic Deep RL
