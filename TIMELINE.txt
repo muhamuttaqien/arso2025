@@ -19,8 +19,14 @@ Learn basic Deep RL
 Review literature about Deep RL Implementation in Robotic Arm Manipulation
 
 
---- DESEMBER
+--- DECEMBER & JANUARY
 
 Training PPO /wo Curriculum
 Evaluate PPO /wo Curriculum 
 Design Evaluation Metrics
+
+
+--- FEBRUARY
+
+Paper writing
+Paper discussion
