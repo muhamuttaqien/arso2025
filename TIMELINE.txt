@@ -2,8 +2,7 @@ TIMELINE
 
 Submission Deadline: February 28, 2025
 
---- NOVEMBER
-
+### NOVEMBER
 ANGGA
 - Implement codebase
 - Research design
@@ -18,13 +17,13 @@ YAMAN
 - Learn the basics of Deep RL
 - Review literature on Deep RL implementations in robotic arm manipulation
 
-DECEMBER & JANUARY
+### DECEMBER & JANUARY
 - Design Curriculum
 - Train PPO with/without Curriculum
 - Design Evaluation Metrics
 - Evaluate PPO
 
-FEBRUARY
+### FEBRUARY
 - Paper writing
 - Paper discussion
 - Paper submission
