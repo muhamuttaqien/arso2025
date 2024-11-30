@@ -31,7 +31,7 @@ torch.backends.cudnn.deterministic = True
 from ppo import PPOAgent
 
 from train import (
-    process_inputs, random_policy, train_ppo
+    process_inputs, random_policy, train_ppo, manual_control_policy
 )
 
 import warnings
@@ -78,12 +78,14 @@ STATE_DIM = SCREEN_WIDTH = SCREEN_HEIGHT = 224 # Resnet's input size
 
 action_space = ["MoveAgent", "RotateAgent", "MoveArm", "MoveArmBase", "LookUp", "LookDown"]
 
-instruction = "Pick up the red tomato on the table"
+# instruction = "Pick up the red tomato on the table"
+instruction = "go to the oven"
 
 # Not implemented yet as the policy
 ppo_agent = PPOAgent(state_dim=STATE_DIM, action_dim = len(action_space))
-
-random_policy(controller, action_space, instruction, num_steps=10)
-# train_ppo(controller, ppo_agent, action_space, state_dim, num_episodes=1000, max_timesteps=200)
+# state_dim = 224*224*3
+manual_control_policy(controller, action_space, instruction)
+# random_policy(controller, action_space, instruction, num_steps=50)
+# train_ppo(controller, ppo_agent, action_space, state_dim, num_episodes=10, max_timesteps=200)
 
 controller.stop()
