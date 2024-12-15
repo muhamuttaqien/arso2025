@@ -40,7 +40,7 @@ warnings.filterwarnings('ignore')
 plt.style.use('ggplot')
 
 floor_index = random.randint(0, 30)
-floor_index = 10
+floor_index = 11
 
 controller = Controller(
     agentMode="arm",
@@ -79,7 +79,7 @@ STATE_DIM = SCREEN_WIDTH = SCREEN_HEIGHT = 224 # Resnet's input size
 action_space = ["MoveAgent", "RotateAgent", "MoveArm", "MoveArmBase", "LookUp", "LookDown"]
 
 # instruction = "Pick up the red tomato on the table"
-instruction = "go to the oven"
+instruction = "tomato"
 
 # Not implemented yet as the policy
 ppo_agent = PPOAgent(state_dim=STATE_DIM, action_dim = len(action_space))

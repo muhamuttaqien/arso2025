@@ -35,7 +35,9 @@ def process_inputs(frame, instruction):
 
 # Function for manual control using the keyboard
 def manual_control_policy(controller, action_space, instruction):
+    image_count = [1]  # Initialize image counter
     def on_press(key):
+        # nonlocal image_count # Access the nonlocal variable
         try:
             if key.char == 'w':
                 controller.step(action="MoveAgent", ahead=0.25, returnToStart=False)
@@ -66,9 +68,18 @@ def manual_control_policy(controller, action_space, instruction):
             plt.imshow(controller.last_event.frame)
             plt.title(f"Agent's View - Similarity: {similarity.item():.4f}")
             plt.axis("off")
+
+            # Create the directory if it doesn't exist
+            save_dir = "adhi/img"
+            os.makedirs(save_dir, exist_ok=True)
+
+            # Save the plot with the desired filename
+            filename = f"image_{image_count[0]}_{key.char}_{similarity.item():.4f}.png"
+            plt.savefig(os.path.join(save_dir, filename))   # You can add a path here if needed 
             plt.show()
             import time
             time.sleep(0.5)
+            image_count[0] += 1  # Increment image counter
         except AttributeError:
             # Handle special keys (e.g., shift, ctrl)
             pass
