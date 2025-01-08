@@ -5,7 +5,7 @@ import numpy as np; np.random.seed(0)
 import matplotlib
 import matplotlib.pyplot as plt
 from PIL import Image
-
+from pynput import keyboard
 import torch
 import clip
 
@@ -32,6 +32,61 @@ def process_inputs(frame, instruction):
     text_features /= text_features.norm(dim=-1, keepdim=True)
     
     return image_features, text_features
+
+# Function for manual control using the keyboard
+def manual_control_policy(controller, action_space, instruction):
+    image_count = [1]  # Initialize image counter
+    def on_press(key):
+        # nonlocal image_count # Access the nonlocal variable
+        try:
+            if key.char == 'w':
+                controller.step(action="MoveAgent", ahead=0.25, returnToStart=False)
+            elif key.char == 's':
+                controller.step(action="MoveAgent", ahead=-0.25, returnToStart=False)
+            elif key.char == 'a':
+                controller.step(action="MoveAgent", right=-0.25, returnToStart=False)
+            elif key.char == 'd':
+                controller.step(action="MoveAgent", right=0.25, returnToStart=False)
+            elif key.char == 'r':
+                controller.step(action="RotateAgent", degrees=30, returnToStart=False)
+            elif key.char == 'f':
+                controller.step(action="RotateAgent", degrees=-30, returnToStart=False)
+            elif key.char == 'u':
+                controller.step(action="LookUp")
+            elif key.char == 'j':
+                controller.step(action="LookDown")
+            elif key.char == 'p':
+                controller.step(action="MoveArm", position={"x": 0.0, "y": 1.0, "z": 0.0}, coordinateSpace="armBase", restrictMovement=False, returnToStart=False)
+            
+            # Process and calculate similarity
+            current_frame = controller.last_event.frame
+            image_features, text_features = process_inputs(current_frame, instruction)
+            similarity = torch.cosine_similarity(image_features, text_features)
+            print(f"Action: {key.char}, Similarity={similarity.item():.4f}")
+
+            # Display the current frame
+            plt.imshow(controller.last_event.frame)
+            plt.title(f"Agent's View - Similarity: {similarity.item():.4f}")
+            plt.axis("off")
+
+            # Create the directory if it doesn't exist
+            save_dir = "adhi/img"
+            os.makedirs(save_dir, exist_ok=True)
+
+            # Save the plot with the desired filename
+            filename = f"image_{image_count[0]}_{key.char}_{similarity.item():.4f}.png"
+            plt.savefig(os.path.join(save_dir, filename))   # You can add a path here if needed 
+            plt.show()
+            import time
+            time.sleep(0.5)
+            image_count[0] += 1  # Increment image counter
+        except AttributeError:
+            # Handle special keys (e.g., shift, ctrl)
+            pass
+
+    # Start listening for keyboard input
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()
 
 def random_policy(controller, action_space, instruction, num_steps):
 
@@ -91,6 +146,8 @@ def random_policy(controller, action_space, instruction, num_steps):
         plt.title("Agent's View")
         plt.axis("off")
         plt.show()
+        import time
+        time.sleep(1)
         
 def train_ppo(controller, ppo_agent, action_space, state_dim, num_episodes=1000, max_timesteps=200):
     
