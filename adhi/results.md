@@ -1,6 +1,11 @@
 # Results of CLIP similarity
 
 
+
+- The robot's position must be precisely in front of the object and close, yielding the highest similarity.  
+- The instructions provided must be accurate. For example, "a scene of an apple on the table" and "a scene of an apple on the sink" produce different results; the sink and table have a significant impact.  
+- The difference in CLIP's performance when seeing the object versus not seeing it is not very significant.
+
 ## ResNet-50 & Scene Floor Plan 11
 
 | Scene (Image) | Instructions (Text) | Backbone (Text) |
